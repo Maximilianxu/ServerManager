@@ -1,8 +1,22 @@
+# Some notes
+## About directories
+Both the client and server should be run on your server. The client is actually a JavaScript frontend server (using Vue), that is, the actual access is as follows:
+
+Your PC (the real client) -(via HTTP)-> JS/Vue frontend --> Python Flask server. 
+
+And, the JS frontend accesses the Flask server via internal links on the server.
+
+## About some codes and known bugs:
+The exceed_user_quota() function in settings.py may better be put in the pool.py to keep the code clean.
+
+The update_left_time() function has bugs due to the concurrent accesses, putting that function in a seperate file and running it independently can fix this bug.
+
 # client
 npm run serve
 
 # server
 python3 app.py
+> I recommend that you execute `su` command to switch to the root account to start the python server, as some operations in util.py will use `lxc` command which requires root previledge.
 
 # dependencies
 
