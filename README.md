@@ -9,7 +9,7 @@ The server will use LXD to manage the GPUs and instances, please check https://g
 
 Then on your server:
 1. cd client and see the readme to prepare the Vue environment.
-2. change the ip in settings.js to your server ip.
+2. **change the ip in settings.js and app.py to your server ip**.
 3. **su root to exec some commands during running, or check the utils/util.py to set your password**
 4. 
 ```
