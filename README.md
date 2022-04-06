@@ -1,22 +1,35 @@
+# Some pictures
+![image](https://user-images.githubusercontent.com/14119191/161905666-19b2c8c9-55c9-437e-a471-6ca996754b17.png)
+![image](https://user-images.githubusercontent.com/14119191/161905352-2b9aaaa9-eb62-4f88-9908-45e676e91555.png)
+![image](https://user-images.githubusercontent.com/14119191/161905534-f101364c-9aeb-432c-be87-60fe9bc76f4f.png)
+
+# How To Use
+**Both the client and the server are run on the server. This client is the JS frontend, not your local machine**
+The server will use LXD to manage the GPUs and instances, please check https://github.com/shenuiuin/LXD_GPU_SERVER to set up the LXD env. It will also use MongoDB as the database, you need to install it first. If you don't want LXD, you need to modify the utils/util.py to set the commands.
+
+Then on your server:
+1. cd client and see the readme to prepare the Vue environment.
+2. change the ip in settings.js to your server ip.
+3. **su root to exec some commands during running, or check the utils/util.py to set your password**
+4. 
+```
+cd server && ./start.sh
+cd client && ./start.sh
+```
+**Please check the two start.sh shells, and remove the nohup to check out the logs if needed.**
+
+## Some settings
+We include two quota strategies in settings.py and pool.py. The user quota limits the maximum number of devices a single user can acquire. The group quota limits the maximum number of devices the whole group can obtain (when several groups share the same server, this is useful). If you don't need the group quota, change the ```WW_GROUP``` to include all user numbers and set the group quota to a big integer.
+
+**Anyway, better read some codes in settings.py, util.py, and pool.py to see how this system works. And configure it by yourselves to meet your needs. Don't worry, there is only a few codes to read.** Also, you can open an issue if you need help.
+
 # Some notes
 ## About directories
 Both the client and server should be run on your server. The client is actually a JavaScript frontend server (using Vue), that is, the actual access is as follows:
 
-Your PC (the real client) -(via HTTP)-> JS/Vue frontend --> Python Flask server. 
+Your PC (the real client) -(via HTTP)-> JS/Vue frontend (the client directory of this repo) --> Python Flask server. 
 
 And, the JS frontend accesses the Flask server via internal links on the server.
-
-## About some codes and known bugs:
-The exceed_user_quota() function in settings.py may better be put in the pool.py to keep the code clean.
-
-The update_left_time() function has bugs due to the concurrent accesses, putting that function in a seperate file and running it independently can fix this bug.
-
-# client
-npm run serve
-
-# server
-python3 app.py
-> I recommend that you execute `su` command to switch to the root account to start the python server, as some operations in util.py will use `lxc` command which requires root previledge.
 
 # dependencies
 
@@ -29,8 +42,6 @@ python3 app.py
 ## 前端
 1. 安装 nodejs 14.x
 2. 安装依赖: 进入client目录, yarn & yarn install
-
-settings.js里把localhost换成服务器ip
 
 ## Ref Manual，一些LXD的tips
 
