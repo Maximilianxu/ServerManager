@@ -3,6 +3,7 @@ node_modules/
 /dist
 *.log
 *.out
+*.pyc
 
 
 # local env files

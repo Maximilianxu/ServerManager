@@ -20,8 +20,11 @@
     "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
+<<<<<<< HEAD
     "package": "^1.0.1",
     "sass": "^1.33.0",
+=======
+>>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
     "uikit": "^3.6.21",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
@@ -38,6 +41,10 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+<<<<<<< HEAD
+=======
+    "eslint-config-prettier": "^8.3.0",
+>>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
     "postcss-loader": "^4.2.0",

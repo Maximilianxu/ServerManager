@@ -58,7 +58,11 @@ const menu = [
         name: 'apply.applied',
         path: 'applied',
         meta: {
+<<<<<<< HEAD
           title: '我的申请',
+=======
+          title: '申请队列',
+>>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
         },
         component: () => import('@/views/Applied'),
       },

@@ -34,6 +34,10 @@ Vue.use(ElementUI, { locale });
 // Vue.use(BootstrapVue);
 Vue.use(Alert);
 Vue.use(VueClipboard);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
 UIkit.use(Icons);
 window.UIkit = UIkit;
 

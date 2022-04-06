@@ -112,7 +112,6 @@ export default {
         return "xxxx";
       }
     },
-
     onCopy: function (e) {
       this.$message({type: 'info', message:"已复制"});
     },
