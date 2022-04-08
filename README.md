@@ -4,11 +4,15 @@
 ![image](https://user-images.githubusercontent.com/14119191/161905534-f101364c-9aeb-432c-be87-60fe9bc76f4f.png)
 
 # How To Use
-**Both the client and the server are run on the server. This client is the JS frontend, not your local machine**
-The server will use LXD to manage the GPUs and instances, please check https://github.com/shenuiuin/LXD_GPU_SERVER to set up the LXD env. It will also use MongoDB as the database, you need to install it first. If you don't want LXD, you need to modify the utils/util.py to set the commands.
+## Env Setup
 
-Then on your server:
-1. cd client and see the readme to prepare the Vue environment.
+The server will use **LXD to manage the GPUs and instances, please check** https://github.com/shenuiuin/LXD_GPU_SERVER to set up the LXD env. Any questions on setting up the LXD env can refer the tips in this readme or open a new issue. If you don't want LXD, you need to modify the utils/util.py to set the commands. After setting the env, you need to create several LXD instances, whose names are the same as those in settings.py. You also need to set the PCI_INFO in utils/util.py of your gpus. Use ```nvidia-smi``` can query this info. In other words, better check settings.py and util.py and tailor them to meet your own needs.
+
+We will also use **MongoDB as the database, you need to install it first**. 
+
+## Sever Deployment:
+**Both the client and the server directories are run on the server. This client is the JS frontend, not your local machine**
+1. cd client and see the readme to start the Vue frontend.
 2. **change the ip in settings.js and app.py to your server ip**.
 3. **su root to exec some commands during running, or check the utils/util.py to set your password**
 4. 
