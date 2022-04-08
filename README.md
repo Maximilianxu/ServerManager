@@ -33,7 +33,7 @@ Both the client and server should be run on your server. The client is actually 
 
 Your PC (the real client) -(via HTTP)-> JS/Vue frontend (the client directory of this repo) --> Python Flask server. 
 
-And, the JS frontend accesses the Flask server via internal links on the server.
+And, the JS frontend will provide the browser the scripts to access the Flask server.
 
 # dependencies
 
