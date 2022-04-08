@@ -6,7 +6,7 @@
 # How To Use
 ## Env Setup
 
-The server will use **LXD to manage the GPUs and instances, please check** https://github.com/shenuiuin/LXD_GPU_SERVER to set up the LXD env. Any questions on setting up the LXD env can refer the tips in this readme or open a new issue. If you don't want LXD, you need to modify the utils/util.py to set the commands. After setting the env, you need to create several LXD instances, whose names are the same as those in settings.py. You also need to set the PCI_INFO in utils/util.py of your gpus. Use ```nvidia-smi``` can query this info. In other words, better check settings.py and util.py and tailor them to meet your own needs.
+The server will use **LXD to manage the GPUs and instances, please check** https://github.com/shenuiuin/LXD_GPU_SERVER to set up the LXD env. Any questions on setting up the LXD env can refer the tips in this readme or open a new issue. If you don't want LXD, you need to modify the utils/util.py to set the commands. After setting the env, you need to create several LXD instances, whose names are the same as those in settings.py. You also need to set the PCI_INFO in utils/util.py of your gpus. Please exec ```nvidia-smi``` to query this info. But, better check settings.py and util.py and tailor them, if needed.
 
 We will also use **MongoDB as the database, you need to install it first**. 
 
