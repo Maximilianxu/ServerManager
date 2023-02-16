@@ -3,8 +3,7 @@ node_modules/
 /dist
 *.log
 *.out
-*.pyc
-
+yarn.lock
 
 # local env files
 .env.local
@@ -24,3 +23,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Python Cache File
+__pycache__/

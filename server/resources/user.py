@@ -18,11 +18,7 @@ class User:
     return hash(self.id_number)
 
   def __eq__(self, o) -> bool:
-<<<<<<< HEAD
     return self.id_number == o.id_number if isinstance(o, User) else self.id_number == o
-=======
-    return self.id_number == o.id_number
->>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
   
   def __str__(self) -> str:
     return str({"id:": self.id_number, "name": self.name})
@@ -39,7 +35,6 @@ class User:
     user_col.insert_one(new_user)
   
   @classmethod
-<<<<<<< HEAD
   def from_id_number(cls, id_number):
     users = cls.user_list()
     if id_number not in users:
@@ -47,8 +42,6 @@ class User:
     return users[users.index(id_number)]
   
   @classmethod
-=======
->>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
   def update_user(cls, id_number, **kwargs):
     newvalues = { "$set": kwargs}
     user_col.update_one({"id_number": id_number}, newvalues)
