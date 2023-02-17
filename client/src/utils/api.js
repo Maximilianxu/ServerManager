@@ -12,10 +12,7 @@ export const api_routes = {
     apply: API_SERVER + "apply",
     applied: API_SERVER + "applied",
     release: API_SERVER + "release",
-<<<<<<< HEAD
     share: API_SERVER + "share",
-=======
->>>>>>> 0f1fedf2249a6b40f55c1f8ba23548a13f54f7b4
   }
 };
 

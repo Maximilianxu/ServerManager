@@ -8,26 +8,19 @@ PCI_INFO = ["0000:1a:00.0", "0000:1b:00.0", \
   "0000:88:00.0", "0000:89:00.0", \
   "0000:b1:00.0", "0000:b2:00.0"]
 
-# set your password, or su to root user before start the server
-sudo_password = "xxxx"
-
 def allocate_gpu_for_instance(inst_name, gpu_list):
-  passwd_cmd = "echo {}".format(sudo_password)
-  pswd = subprocess.run(passwd_cmd.split(" "), check=True, capture_output=True)
-  cmd_tplt = "sudo lxc config device add {} gpu{} gpu pci={}"
+  cmd_tplt = "lxc config device add {} gpu{} gpu pci={}"
   for gpu in gpu_list:
     gid = gpu.gid
     cmd = cmd_tplt.format(inst_name, gid, PCI_INFO[gid])
     print("exec", cmd)
-    subprocess.run(cmd.split(" "), input=pswd.stdout)
+    subprocess.run(cmd.split(" "))
 
 def free_all_gpu_of_instance(inst_name):
-  list_dev_cmd_tplt = "sudo lxc config device list {}"
-  free_dev_cmd_tplt = "sudo lxc config device remove {} {}"
-  passwd_cmd = "echo {}".format(sudo_password)
-  pswd = subprocess.run(passwd_cmd.split(" "), check=True, capture_output=True)
+  list_dev_cmd_tplt = "lxc config device list {}"
+  free_dev_cmd_tplt = "lxc config device remove {} {}"
   devs = subprocess.run(list_dev_cmd_tplt.format(inst_name).split(" "), \
-    capture_output=True, input=pswd.stdout).stdout.decode().split("\n")
+    capture_output=True).stdout.decode().split("\n")
   for dev in devs:
     if dev != "" and "gpu" in dev:
       cmd = free_dev_cmd_tplt.format(inst_name, dev)
@@ -35,17 +28,16 @@ def free_all_gpu_of_instance(inst_name):
       subprocess.run(cmd.split(" "))
 
 def change_password(inst_name, new_password):
-  passwd_cmd = "echo {}\n{}".format(new_password, new_password)
-  pswd = subprocess.run(passwd_cmd.split(" "), check=True, capture_output=True)
-  print("echo output:", pswd.stdout.decode())
+  print('password:', new_password)
+  pswd = f'{new_password}\n{new_password}\n'.encode('utf-8')
   cmd_tplt = "lxc exec {} -- passwd ubuntu"
   cmd = cmd_tplt.format(inst_name)
   print("exec", cmd)
-  subprocess.run(cmd.split(" "), input=pswd.stdout)
+  subprocess.run(cmd.split(" "), input=pswd)
   cmd_tplt = "lxc exec {} -- passwd root"
   cmd = cmd_tplt.format(inst_name)
   print("exec", cmd)
-  subprocess.run(cmd.split(" "), input=pswd.stdout)
+  subprocess.run(cmd.split(" "), input=pswd)
   return new_password
 
 def get_random_password(length=8):
